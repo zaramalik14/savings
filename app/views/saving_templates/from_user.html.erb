@@ -2,7 +2,7 @@
 
 <h1>Today I Saved</h1>
 
-<form action="/savings/new">
+<form action="/savings/created">
   <label for="category">Category</label>
   <input id="category" name="user_category">
   
@@ -15,9 +15,13 @@
   <label for="user3">Instead of</label>
   <input id="user3" name="user_instead_of">
 
+  <label for="user4">Day created</label>
+  <input id="user4" value=<%= @the_day%> name="user_date">
+
   <button>Save</button>
 </form>
 
 <hr>
 
 <a href="/">Back to goals</a>
+<a href="/savings/new">See my savings</a>

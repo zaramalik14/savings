@@ -12,9 +12,12 @@
 #  updated_at  :datetime         not null
 #
 class Saving < ApplicationRecord
-  validates(:amount, { :presence => true})
-  validates(:by_doing, { :presence => true})
-  validates(:instead_of, { :presence => true})
-  validates(:category, { :presence => true})
+  validates(:amount, {
+    :presence => true,
+    :uniqueness => { :scope => [:category]}
+})
+  validates(:by_doing, { :presence => true,})
+  validates(:instead_of, { :presence => true,})
+  validates(:category, { :presence => true,})
   
 end

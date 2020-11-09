@@ -1,40 +1,37 @@
 class SavingsController < ApplicationController
 
   def from_user
-    #Parameters: {"new_category"=>"food", "new_goal"=>"100", "new_win"=>"hi"}
-    category = params.fetch("new_category")
-    goal = params.fetch("new_goal")
-    win = params.fetch("new_win")
 
-    a_goal = Target.new
-    a_goal.category = category
-    a_goal.goal = goal
-    a_goal.gift = win
-    a_goal.save
+    require "date"
+    @the_day = Time.now.strftime("%D")
     
     render({ :template => "saving_templates/from_user.html.erb"})
   end
 
-  def index
-    #Parameters: {"user_amount"=>"50", "user_by_doing"=>"walking", "user_instead_of"=>"ubering"}
+  def created
+  #Parameters: {"user_amount"=>"50", "user_by_doing"=>"walking", "user_instead_of"=>"ubering"}
     what_was_saved = params.fetch("user_amount")
     by = params.fetch("user_by_doing")
     instead = params.fetch("user_instead_of")
     category = params.fetch("user_category")
+    day = params.fetch("user_date")
 
     new_entry = Saving.new
     new_entry.amount = what_was_saved
     new_entry.by_doing = by
     new_entry.instead_of = instead
     new_entry.category = category
+    new_entry.day_created = day
     new_entry.save
 
     @savings = Saving.all
 
-    new_link = Link.new
-    new_link.target_id = Target.where({ :category => category}).at(0).id
-    new_link.saving_id = Saving.where({ :amount => what_was_saved}).at(0).id
-    new_link.save
+    render({ :template => "saving_templates/from_user.html.erb"})
+
+  end
+
+  def index
+    @savings = Saving.all
     
     render({ :template => "saving_templates/index.html.erb"})
 
@@ -72,17 +69,53 @@ class SavingsController < ApplicationController
       bye.destroy
     end
 
-    other_find = Target.where({ :category => category}).at(0)
-    redirect_to("/completed_goal/" + other_find.id.to_s)
+    
+    redirect_to("/completed_goal")
 
     #render({ :template => "saving_templates/delete_them.html.erb"})
   end
 
   def done
     #Parameters: {"goal_id"=>"7"}
-    the_goal = params.fetch("goal_id")
-    
+  
+
     render({ :template => "saving_templates/done.html.erb"})
 
+  end
+
+  def update
+   #Parameters: {"category"=>"Leisure", "amount"=>"40}
+   @category_here = params.fetch("category")
+   @amount_here = params.fetch("amount")
+   @by_here = params.fetch("by")
+   @instead_here = params.fetch("instead")
+
+   @find = Saving.where({ :by_doing => @by_here}).at(0).id
+  
+
+
+    
+    render({ :template => "saving_templates/update.html.erb"})
+
+  end
+
+  def final_update
+    #Parameters: {"user_category"=>"Leisure", "user_amount"=>"40", "user_by_doing"=>"", "user_instead_of"=>"", "id"=>""}
+    c = params.fetch("user_category")
+    a = params.fetch("user_amount")
+    b = params.fetch("user_by_doing")
+    i = params.fetch("user_instead_of")
+    the_id = params.fetch("id")
+   
+
+    find = Saving.where({ :id => the_id }).at(0)
+    find.amount = a
+    find.by_doing = b
+    find.instead_of = i
+    find.category = c
+    find.save
+
+    redirect_to("/")
+  
   end
 end

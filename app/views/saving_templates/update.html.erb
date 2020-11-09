@@ -1,0 +1,17 @@
+<h1>Today I Saved</h1>
+
+<form action="/update/<%= @category_here%>/<%= @amount_here%>/<%= @by_here%>/<%= @instead_here%>/<%= @find %>">
+  <label for="category">Category</label>
+  <input id="category" name="user_category" value=<%= @category_here %>>
+  
+  <label for="user">Amount</label>
+  <input id="user" name="user_amount" value=<%= @amount_here %>>
+
+  <label for="user2">By</label>
+  <input id="user2" name="user_by_doing">
+
+  <label for="user3">Instead of</label>
+  <input id="user3" name="user_instead_of">
+
+  <button>Update</button>
+</form>

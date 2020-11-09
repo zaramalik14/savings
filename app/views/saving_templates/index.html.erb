@@ -4,22 +4,32 @@
 
 <table border="1">
   <tr>
+    <th>Date</th>
     <th>Category</th>
     <th>Amount</th>
     <th>By</th>
     <th>Instead of</th>
     <th></th>
+    <th></th>
   </tr>
 <% @savings.each do |each_amount| %>
 
   <tr>
+    <td><%= each_amount.id %></td>
     <td><%= each_amount.category %></td>
     <td><%= each_amount.amount %></td>
     <td><%= each_amount.by_doing %></td>
     <td><%= each_amount.instead_of %></td>
-    <td><a href="/savings/<%= each_amount.category %>">See goal in progress</td>
+    <td><a href="/update_savings/<%= each_amount.category%>/<%= each_amount.amount.to_s%>/<%= each_amount.by_doing%>/<%= each_amount.instead_of%>">Update saving</a></td>
+    <td><a href="/savings/<%= each_amount.category %>">See goal in progress</a></td>
+    
 
   </tr>
 <% end %>
 
 </table>
+
+<hr>
+
+<a href="/">Back to goals</a>
+<a href="/savings">Today's savings</a>
