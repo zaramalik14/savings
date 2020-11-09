@@ -1,0 +1,13 @@
+<h1><%= @category.capitalize %> Savings</h1>
+
+<% @find.each do |a_count| %>
+  <ul>
+  <li>
+    <%= a_count.amount %> dollars for <%= a_count.by_doing %>
+  </li>
+  </ul>
+<% end %>
+
+<% if @total < @the_goal%>
+  You are <%= @the_goal - @total %> dollars away from <%= @the_win.downcase %>!
+<% end %>

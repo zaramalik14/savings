@@ -1,0 +1,25 @@
+
+
+<h1>My savings</h1>
+
+<table border="1">
+  <tr>
+    <th>Category</th>
+    <th>Amount</th>
+    <th>By</th>
+    <th>Instead of</th>
+    <th></th>
+  </tr>
+<% @savings.each do |each_amount| %>
+
+  <tr>
+    <td><%= each_amount.category %></td>
+    <td><%= each_amount.amount %></td>
+    <td><%= each_amount.by_doing %></td>
+    <td><%= each_amount.instead_of %></td>
+    <td><a href="/savings/<%= each_amount.category %>">See goal in progress</td>
+
+  </tr>
+<% end %>
+
+</table>

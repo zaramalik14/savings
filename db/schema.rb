@@ -10,6 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2020_11_08_202634) do
+
+  create_table "links", force: :cascade do |t|
+    t.integer "target_id"
+    t.integer "saving_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "savings", force: :cascade do |t|
+    t.integer "amount"
+    t.string "by_doing"
+    t.string "instead_of"
+    t.string "category"
+    t.datetime "day_created"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "targets", force: :cascade do |t|
+    t.string "category"
+    t.string "goal"
+    t.string "gift"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
 end
