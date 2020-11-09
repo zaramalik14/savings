@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 get("/", { :controller => "categories", :action => "index"})
 get("/categories", { :controller => "categories", :action => "categorizing"})
+get("/categories/delete/:id", { :controller => "categories", :action =>"delete_category"})
+get("/categories/list", { :controller => "categories", :action =>"list"})
+get("/categories/update/:c/:go/:gi", { :controller => "categories", :action =>"update_goal"})
+get("/categories/update/:c/:go/:gi/:id", { :controller => "categories", :action => "update_categories"})
 get("/savings", { :controller => "savings", :action => "from_user"})
 get("/savings/new", { :controller => "savings", :action => "index"})
 get("/savings/created", { :controller => "savings", :action => "created"})

@@ -1,0 +1,30 @@
+<h1 style="padding-bottom:35px; width:80%">
+My Goals
+</h1>
+
+<table border="1">
+  <tr>
+    <th>Category</th>
+    <th>Goal</th>
+    <th>Prize</th>
+    <th></th>
+    <th></th>
+  </tr>
+<% @the_goal.each do |each_goal| %>
+
+  <tr>
+    <td><%= each_goal.category %></td>
+    <td><%= each_goal.goal %></td>
+    <td><%= each_goal.gift %></td>
+    <td><a href="/categories/update/<%= each_goal.category %>/<%= each_goal.goal %>/<%= each_goal.gift %>">Update goal</td>
+    <td><a href="/categories/delete/<%= each_goal.category %>">Delete category</a></td>
+  </tr>
+<% end %>
+
+</table>
+
+<hr>
+
+<a href="/">New goal</a>
+<a href="/savings">Today's savings</a>
+

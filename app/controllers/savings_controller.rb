@@ -26,6 +26,9 @@ class SavingsController < ApplicationController
 
     @savings = Saving.all
 
+    require "date"
+    @the_day = Time.now.strftime("%D")
+
     render({ :template => "saving_templates/from_user.html.erb"})
 
   end
@@ -84,7 +87,7 @@ class SavingsController < ApplicationController
   end
 
   def update
-   #Parameters: {"category"=>"Leisure", "amount"=>"40}
+   #Parameters: {"category"=>"Money", "amount"=>"20", "by"=>"eating at home", "instead"=>"at a restaurant"}
    @category_here = params.fetch("category")
    @amount_here = params.fetch("amount")
    @by_here = params.fetch("by")
@@ -115,7 +118,7 @@ class SavingsController < ApplicationController
     find.category = c
     find.save
 
-    redirect_to("/")
+    redirect_to("/savings/new")
   
   end
 end

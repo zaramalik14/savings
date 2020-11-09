@@ -1,0 +1,19 @@
+<h1 style="padding-bottom:35px; width:80%">
+Update Goal
+</h1>
+
+<form action="/categories/update/<%= @new_category %>/<%= @new_goal %>/<%= @new_gift %>/<%= @find %>">
+
+  <div class="label">
+  <label for="goal">Goal</label>
+  <input id="goal" name="updated_goal" value=<%= @new_goal %>>
+  </div>
+
+  <div class="label">
+  <label for="small_win">Prize</label>
+  <input id="small_win" name="updated_win" value=<%= @new_gift%>>
+  </div>
+
+  <button>Save</button>
+
+</form>

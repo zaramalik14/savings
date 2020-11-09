@@ -1,16 +1,24 @@
 
 
-<h1>My Goals</h1>
+<h1 style="padding-bottom:35px; width:80%">
+New Goal
+</h1>
 
 <form action="/categories">
+  <div class="label">
   <label for="category">Category</label>
-  <input id="category" name="new_category">
+  <input id="category" name="new_category" placeholder="Time/Money/Calories">
+  </div>
 
+  <div class="label">
   <label for="goal">Goal</label>
   <input id="goal" name="new_goal" placeholder="Amount">
+  </div>
 
+  <div class="label">
   <label for="small_win">Prize</label>
-  <textarea id="small_win" name="new_win" placeholder="Start with an ing verb"></textarea>
+  <input id="small_win" name="new_win" placeholder="Start with an ing verb">
+  </div>
 
   <button>Save</button>
 
@@ -18,4 +26,6 @@
 
 <hr>
 
+<a href="/categories/list">See my goals</a>
 <a href="/savings">Today's savings</a>
+<a href="/savings/new">See my savings</a>

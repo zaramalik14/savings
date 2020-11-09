@@ -1,6 +1,8 @@
 
 
-<h1>My savings</h1>
+<h1 style="padding-bottom:35px; width:80%">
+My Savings
+</h1>
 
 <table border="1">
   <tr>
@@ -15,7 +17,7 @@
 <% @savings.each do |each_amount| %>
 
   <tr>
-    <td><%= each_amount.id %></td>
+    <td><%= each_amount.day_created.strftime("%D") %></td>
     <td><%= each_amount.category %></td>
     <td><%= each_amount.amount %></td>
     <td><%= each_amount.by_doing %></td>
